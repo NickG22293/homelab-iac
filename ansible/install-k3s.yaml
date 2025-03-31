@@ -1,0 +1,29 @@
+- hosts: nucbox
+  become: true
+  tasks:
+    - name: Install K3s (master)
+      shell: curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+
+    - name: Get K3s join token
+      shell: cat /var/lib/rancher/k3s/server/node-token
+      register: k3s_token
+
+    - name: Copy token to local machine
+      local_action: copy content={{ k3s_token.stdout }} dest=~/k3s_token.txt
+
+    - name: Install fluxcd
+      shell: |
+        curl -s https://fluxcd.io/install.sh | sudo bash
+        flux install \
+          --namespace=flux-system \
+          --network-policy=false \
+          --components-extra=image-reflector-controller,image-automation-controller \
+          --export > ./kustomization.yaml
+
+# once onboarding RPi 
+# - hosts: worker1,worker2
+#   become: true
+#   tasks:
+#     - name: Install K3s (workers)
+#       shell: |
+#         curl -sfL https://get.k3s.io | K3S_URL="https://10.0.0.196:6443" K3S_TOKEN="{{ lookup('file', '~/k3s_token.txt') }}" sh -

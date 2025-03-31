@@ -1,0 +1,35 @@
+{
+  "name": "IaC Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2.5.3": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2.12.1": {},
+    "ghcr.io/devcontainers/features/aws-cli:1.1.0": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+    "ghcr.io/devcontainers/features/terraform:1.3.9": {},
+    "ghcr.io/devcontainers-extra/features/ansible:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "terraform.languageServer": {
+          "external": true,
+          "path": "/usr/local/bin/terraform-ls"
+        }
+      },
+      "extensions": [
+        "hashicorp.terraform",
+        "redhat.ansible",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "mhutchie.git-graph",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "terraform --version && ansible --version && helm version && kubectl version --client"
+}
