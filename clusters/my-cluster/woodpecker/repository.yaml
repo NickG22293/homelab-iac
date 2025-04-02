@@ -5,4 +5,12 @@ metadata:
   namespace: woodpecker
 spec:
   interval: 1m0s
+--- 
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: woodpecker
+  namespace: woodpecker
+spec:
+  interval: 5m0s
   url: oci://ghcr.io/woodpecker-ci/helm
