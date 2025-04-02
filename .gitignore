@@ -1,6 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Ansible Vault pass
+ansible/vault_pass.txt
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
