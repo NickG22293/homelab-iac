@@ -4,11 +4,8 @@ metadata:
   name: woodpecker-ci
   namespace: woodpecker
 spec:
-  chart:
-    spec:
-      chart: woodpecker
-      sourceRef:
-        kind: OCIRepository
-        name: woodpecker-oci
-      version: 3.0.6
-  interval: 1m0s
+  chartRef:
+    kind: OCIRepository
+    name: woodpecker-oci
+    namespace: woodpecker
+  interval: 10m0s
