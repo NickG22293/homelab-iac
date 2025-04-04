@@ -8,7 +8,7 @@ spec:
     spec:
       chart: woodpecker
       sourceRef:
-        kind: HelmRepository
-        name: woodpecker
+        kind: OCIRepository
+        name: woodpecker-oci
       version: 3.0.6
   interval: 1m0s
