@@ -2,7 +2,7 @@
   become: true
   tasks:
     - name: Install K3s (master)
-      shell: curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+      shell: curl -sfL https://get.k3s.io | sh -s - --disable=traefik --write-kubeconfig-mode 644
 
     - name: Get K3s join token
       shell: cat /var/lib/rancher/k3s/server/node-token
@@ -38,13 +38,6 @@
           --kubeconfig /etc/rancher/k3s/k3s.yaml 
       environment:
         GITHUB_TOKEN: "{{ github_pat }}"
-    - name: Install tailscale
-      shell: |
-        curl -fsSL https://tailscale.com/install.sh | sh
-        # TODO: REVISIT THIS 
-        # tailscale up --accept-routes --advertise-exit-node --authkey={{ tailscale_auth_key }}
-      # environment:
-      #   TAILSCALE_AUTH_KEY: "{{ tailscale_auth_key }}"
 
 # once onboarding RPi 
 # - hosts: worker1,worker2
