@@ -27,5 +27,5 @@ spec:
       version: '4.12.1'
       sourceRef:
         kind: HelmRepository
-        name: ingress-nginx
+        name: nginx
       interval: 5m
