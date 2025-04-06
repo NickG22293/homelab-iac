@@ -29,13 +29,13 @@ spec:
         kind: HelmRepository
         name: nginx
       interval: 5m
-      values: 
-        # TODO: Change this to LB once we're done with testing
-        controller: 
-          service:
-            type: NodePort
-            nodePorts:
-              http: 32080
-              https: 32443
-          hostNetwork: true
-          dnsPolicy: ClusterFirstWithHostNet
+  values: 
+    # TODO: Change this to LB once we're done with testing
+    controller: 
+      service:
+        type: NodePort
+        nodePorts:
+          http: 32080
+          https: 32443
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
