@@ -27,6 +27,6 @@ spec:
   values: 
     operator: 
       registry: rancher
-      image: mirrored-appscode-kubed
+      repository: mirrored-appscode-kubed
       tag: v0.13.2
 
