@@ -11,7 +11,7 @@ metadata:
 spec:
   type: oci
   interval: 5m
-  url: oci://ghcr.io/nickg22293/nick-g
+  url: oci://ghcr.io/nickg22293/nick-g-chart
   secretRef:
     name: ghcr-pull-secret
 ---
