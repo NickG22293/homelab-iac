@@ -11,7 +11,7 @@ metadata:
 spec:
   type: oci
   interval: 5m
-  url: oci://ghcr.io/nickg22293/nick-g-chart
+  url: oci://ghcr.io/nickg22293/nick-g
   secretRef:
     name: ghcr-pull-secret
 ---
@@ -25,7 +25,7 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: nick-g
+      chart: nick-g-chart
       version: '0.1.0'
       sourceRef:
         kind: HelmRepository
